@@ -5,6 +5,13 @@ Icon?
 Thumbs.db
 *.DS_Store
 
+# Tuist (projects and workspaces are generated; run `tuist generate`)
+*.xcodeproj
+*.xcworkspace
+Derived/
+.tuist-bin/
+.tuist-version
+
 # Xcode
 *.pbxuser
 *.mode1v3
@@ -46,3 +53,8 @@ env.sh
 
 # UI Tests
 .gitmodules
+
+# SPM
+*.build
+*.swiftpm
+Package.resolved
