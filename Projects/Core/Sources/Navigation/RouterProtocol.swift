@@ -5,6 +5,8 @@
 //  Created by Çağatay Eğilmez on 13.07.2026.
 //
 
+import UIKit
+
 @MainActor
 public protocol RouterProtocol: AnyObject {
 
@@ -28,6 +30,13 @@ public protocol RouterProtocol: AnyObject {
     ///  - route: Route object for base
     ///  - animated: Using animation value
     func present(_ route: any Route, animated: Bool)
+
+    /// Presents the given alert modally
+    ///
+    /// - Parameters:
+    ///  - alert: Alert item for presentation
+    ///  - animated: Using animation value
+    func present(_ alert: UIAlertController, animated: Bool)
 
     /// Pops the top view controller from the navigation stack
     ///
@@ -61,6 +70,13 @@ public extension RouterProtocol {
     /// - Parameter route: Route object for base
     func present(_ route: any Route) {
         present(route, animated: true)
+    }
+
+    /// Presents the given alert modally
+    ///
+    /// - Parameter alert: Alert item for presentation
+    func present(_ alert: UIAlertController) {
+        present(alert, animated: true)
     }
 
     /// Pops the top view controller from the navigation stack

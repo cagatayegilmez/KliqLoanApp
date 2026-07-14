@@ -22,13 +22,13 @@ public enum LoanType: String, CaseIterable, Codable, Sendable {
 public enum LoanStatus: String, CaseIterable, Codable, Sendable {
 
     /// Active loan type
-    case active = "Active"
+    case active = "active"
     /// Tardy loan type
-    case overdue = "Overdue"
+    case overdue = "overdue"
     /// Default loan type
-    case inDefault = "Default"
+    case inDefault = "default"
     /// Paid loan type
-    case paid = "Paid"
+    case paid = "paid"
 }
 
 public struct Loan: Codable, Hashable, Identifiable, Sendable {

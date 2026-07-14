@@ -6,6 +6,7 @@
 //
 
 import Core
+import DesignSystem
 import HomeFeature
 import LoginFeature
 import UIKit
@@ -14,7 +15,7 @@ import UIKit
 final class AppCoordinator {
 
     private let window: UIWindow
-    private let navigationController = UINavigationController()
+    private let navigationController = KLNavigationController()
     private let router: DefaultRouter
 
     init(window: UIWindow) {

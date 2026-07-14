@@ -16,7 +16,6 @@ final class DefaultRouter: RouterProtocol {
 
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
-        configureAppearance()
     }
 
     func register<R: Route>(_ routeType: R.Type,
@@ -56,6 +55,14 @@ final class DefaultRouter: RouterProtocol {
         navigationController?.present(controller, animated: animated)
     }
 
+    func present(_ alert: UIAlertController, animated: Bool) {
+        guard let controller = navigationController?.viewControllers.last else {
+            return
+        }
+
+        controller.present(alert, animated: animated)
+    }
+
     func pop(animated: Bool) {
         navigationController?.popViewController(animated: animated)
     }
@@ -71,17 +78,7 @@ final class DefaultRouter: RouterProtocol {
             assertionFailure("No factory registered for route: \(route)")
             return nil
         }
-        return controller
-    }
 
-    private func configureAppearance() {
-        UINavigationBar.appearance().tintColor = UIColor(red: 0.13,
-                                                         green: 0.17,
-                                                         blue: 0.27,
-                                                         alpha: 1.0)
-        UINavigationBar.appearance().titleTextAttributes = [
-            .foregroundColor: UIColor(red: 0.15, green: 0.15, blue: 0.20, alpha: 1.0),
-            .font: UIFont.boldSystemFont(ofSize: 18)
-        ]
+        return controller
     }
 }
