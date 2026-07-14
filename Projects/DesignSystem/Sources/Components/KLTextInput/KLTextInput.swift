@@ -56,8 +56,7 @@ public struct KLTextInput: View {
             }
     }
 
-    @ViewBuilder
-    private var field: some View {
+    @ViewBuilder private var field: some View {
         if configuration.isSecure {
             SecureField(configuration.placeholder, text: $text)
         } else {

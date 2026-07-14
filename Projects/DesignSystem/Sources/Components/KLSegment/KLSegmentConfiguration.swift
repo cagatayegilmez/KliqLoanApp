@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Segment item model
 public struct KLSegmentItem {
 
     /// Unique id of segment item
@@ -14,6 +15,11 @@ public struct KLSegmentItem {
     /// Shown title of segment item
     public let title: String
 
+    /// Initilization of model
+    ///
+    /// - Parameters:
+    ///   - id: Unique id for listing items
+    ///   - title: Title of showing in segment
     public init(id: UUID,
                 title: String) {
         self.id = id
@@ -21,8 +27,10 @@ public struct KLSegmentItem {
     }
 }
 
+/// Configuration of segmented view
 public struct KLSegmentConfiguration {
 
+    /// Segment item list
     public let segments: [KLSegmentItem]
 
     private init(segments: [KLSegmentItem]) {

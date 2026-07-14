@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 final class HomeFeatureViewController: UIViewController {
 
     private let viewModel: HomeFeatureViewModel
@@ -22,4 +21,3 @@ final class HomeFeatureViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 }
-

@@ -42,22 +42,33 @@ public protocol RouterProtocol: AnyObject {
 
 public extension RouterProtocol {
 
+    /// Replaces the navigation stack with the given route
+    ///
+    /// - Parameter route: Route object for base
     func setRoot(_ route: any Route) {
         setRoot(route, animated: true)
     }
 
+    /// Pushes the given route onto the navigation stack
+    ///
+    /// - Parameter route: Route object for base
     func push(_ route: any Route) {
         push(route, animated: true)
     }
 
+    /// Presents the given route modally
+    ///
+    /// - Parameter route: Route object for base
     func present(_ route: any Route) {
         present(route, animated: true)
     }
 
+    /// Pops the top view controller from the navigation stack
     func pop() {
         pop(animated: true)
     }
 
+    /// Dismisses the currently presented view controller
     func dismiss() {
         dismiss(animated: true)
     }

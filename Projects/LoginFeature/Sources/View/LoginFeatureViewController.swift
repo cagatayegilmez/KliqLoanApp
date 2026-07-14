@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 final class LoginFeatureViewController: UIViewController {
 
     private let viewModel: LoginFeatureViewModel
@@ -22,4 +21,3 @@ final class LoginFeatureViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 }
-

@@ -9,9 +9,13 @@ import Core
 import DesignSystem
 import UIKit
 
+/// Creates the Home feature module
 @MainActor
-public struct HomeFeatureBuilder {
+public enum HomeFeatureBuilder {
 
+    /// Builds the root view controller for the Home feature
+    ///
+    /// - Parameter router: Router protocol item for routing screens
     public static func build(router: any RouterProtocol) -> UIViewController {
         let viewModel = HomeFeatureViewModel()
         let view = HomeFeatureView(viewModel: viewModel)

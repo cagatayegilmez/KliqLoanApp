@@ -8,7 +8,7 @@
 import SwiftUI
 
 @MainActor
-private enum LoanFilterSegments: Sendable {
+private enum LoanFilterSegments {
 
     static let all = KLSegmentItem(id: UUID(), title: "All")
     static let active = KLSegmentItem(id: UUID(), title: "Active")

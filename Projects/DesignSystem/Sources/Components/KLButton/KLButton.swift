@@ -37,7 +37,8 @@ public struct KLButton: View {
 private struct KLButtonStyle: ButtonStyle {
 
     let style: KLButtonType
-    @Environment(\.isEnabled) private var isEnabled
+    @Environment(\.isEnabled)
+    private var isEnabled
 
     func makeBody(configuration: Configuration) -> some View {
         styledLabel(configuration.label)
