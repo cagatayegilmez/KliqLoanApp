@@ -9,6 +9,7 @@ import Core
 import DesignSystem
 import Foundation
 import LoanData
+import UIKit
 
 @MainActor
 protocol HomeFeatureViewModelProtocol: AnyObject {
@@ -25,9 +26,15 @@ protocol HomeFeatureViewModelProtocol: AnyObject {
     /// Selected segment item's id
     var selectedSegment: UUID { get set }
 
+    /// Triggers when error occurs
+    var onError: ((Error) -> Void)? { get set }
+
     /// Fetches and processes the loan list
     func fetchLoans() async
 
     /// Triggers when logout button tapped on view controller
     func logoButtonTapped() async
+
+    /// Triggers when alert produced
+    func presentAlert(_ alert: UIAlertController)
 }

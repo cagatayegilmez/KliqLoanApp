@@ -6,6 +6,7 @@
 //
 
 import Core
+import UIKit
 
 final class HomeFeatureRouter: HomeFeatureRoutingProtocol {
 
@@ -17,5 +18,9 @@ final class HomeFeatureRouter: HomeFeatureRoutingProtocol {
 
     func routeToLogout() {
         appRouter.setRoot(AppRoute.login, animated: true)
+    }
+
+    func present(alert: UIAlertController) {
+        appRouter.present(alert, animated: true)
     }
 }

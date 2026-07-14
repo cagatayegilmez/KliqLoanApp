@@ -8,6 +8,16 @@
 import DesignSystem
 import SwiftUI
 
+@MainActor
+private enum Constant {
+
+    static let screenSize = UIScreen.main.bounds
+    static var vStackInsetsWidth: CGFloat {
+        Constant.screenSize.width - .spacing1600
+    }
+    static let logoName = "kliq_logo"
+}
+
 struct HomeFeatureView: View {
 
     @State private var viewModel: HomeFeatureViewModelProtocol
@@ -32,15 +42,25 @@ struct HomeFeatureView: View {
 
     @ViewBuilder private var content: some View {
         switch viewModel.viewState {
-        case .idle:
-            Text("Loading...")
-        case .loading:
-            ProgressView()
+        case .idle, .loading, .failed:
+            Image(Constant.logoName)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: Constant.vStackInsetsWidth,
+                       height: .spacing1250)
         case .loaded:
+            screenContent()
+        }
+    }
+
+    @ViewBuilder
+    private func screenContent() -> some View {
+        VStack {
             KLSegment(selection: $viewModel.selectedSegment,
                       configuration: .segments(viewModel.segments))
-        case .failed(let message):
-            Text(message)
+            .frame(width: Constant.vStackInsetsWidth,
+                   height: .spacing1250)
+            Spacer()
         }
     }
 }

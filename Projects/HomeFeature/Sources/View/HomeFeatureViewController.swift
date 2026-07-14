@@ -10,8 +10,10 @@ import UIKit
 
 private enum Constant {
 
-    static let navTitle: String = "Loan Portfolio"
-    static let logoutTitle: String = "Logout"
+    static let navTitle = "Loan Portfolio"
+    static let logoutTitle = "Logout"
+    static let errorTitle = "Error"
+    static let alertButtonTitle = "OK"
 }
 
 final class HomeFeatureViewController: UIViewController {
@@ -47,6 +49,22 @@ final class HomeFeatureViewController: UIViewController {
             self.logoutTask = Task {
                 await self.viewModel.logoButtonTapped()
             }
+        }
+        setOnErrorHandler()
+    }
+
+    private func setOnErrorHandler() {
+        viewModel.onError = { [weak self] error in
+            guard let self else {
+                return
+            }
+
+            let alert = UIAlertController(title: Constant.errorTitle,
+                                          message: error.localizedDescription,
+                                          preferredStyle: .alert)
+            alert.addAction(.init(title: Constant.alertButtonTitle,
+                                  style: .cancel))
+            self.viewModel.presentAlert(alert)
         }
     }
 }

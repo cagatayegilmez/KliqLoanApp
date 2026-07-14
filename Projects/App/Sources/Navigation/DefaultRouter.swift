@@ -55,6 +55,14 @@ final class DefaultRouter: RouterProtocol {
         navigationController?.present(controller, animated: animated)
     }
 
+    func present(_ alert: UIAlertController, animated: Bool) {
+        guard let controller = navigationController?.viewControllers.last else {
+            return
+        }
+
+        controller.present(alert, animated: animated)
+    }
+
     func pop(animated: Bool) {
         navigationController?.popViewController(animated: animated)
     }
@@ -70,6 +78,7 @@ final class DefaultRouter: RouterProtocol {
             assertionFailure("No factory registered for route: \(route)")
             return nil
         }
+
         return controller
     }
 }
