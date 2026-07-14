@@ -13,7 +13,8 @@ public final class LoadingView: UIView {
     var isActive = false
 
     private let animationView: LottieAnimationView = {
-        let animationView = LottieAnimationView(name: "loading")
+        let animationView = LottieAnimationView(name: "loading",
+                                                bundle: .module)
         animationView.translatesAutoresizingMaskIntoConstraints = false
         animationView.loopMode = .loop
         return animationView

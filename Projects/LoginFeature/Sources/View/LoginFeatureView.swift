@@ -23,7 +23,7 @@ private enum Constant {
 
 struct LoginFeatureView: View {
 
-    @State private var viewModel: LoginFeatureViewModel
+    @State private var viewModel: LoginFeatureViewModelProtocol
 
     init(viewModel: LoginFeatureViewModel) {
         _viewModel = State(initialValue: viewModel)

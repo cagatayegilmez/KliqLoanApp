@@ -15,10 +15,10 @@ protocol LoginFeatureViewModelProtocol: AnyObject {
     var password: String { get set }
 
     /// Error string for mail input
-    var mailError: String? { get }
+    var mailError: String? { get set }
 
     /// Error string for password input
-    var passwordError: String? { get }
+    var passwordError: String? { get set }
 
     /// Triggers when sign in button tapped
     func signInButtonTapped() async

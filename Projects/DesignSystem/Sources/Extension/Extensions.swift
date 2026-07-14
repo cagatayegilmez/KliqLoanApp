@@ -11,7 +11,7 @@ import UIKit
 @MainActor private var loadingViewKey: UInt8 = 0
 
 @MainActor
-protocol SwiftUILoaderProtocol: AnyObject {
+public protocol SwiftUILoaderProtocol: AnyObject {
 
     func toggleLoading(isLoading: Bool)
 }
@@ -88,7 +88,7 @@ extension UIViewController: SwiftUILoaderProtocol {
         loadingView.hide()
     }
 
-    func toggleLoading(isLoading: Bool) {
+    public func toggleLoading(isLoading: Bool) {
         switch isLoading {
         case true:
             showLoading()

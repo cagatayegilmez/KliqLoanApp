@@ -11,6 +11,7 @@ import ProjectDescriptionHelpers
 let project = Project.framework(
     name: "DesignSystem",
     bundleIdSuffix: "designsystem",
+    hasResources: true,
     hasTests: false,
     dependencies: [
         .package("Lottie")

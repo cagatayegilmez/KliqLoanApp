@@ -14,7 +14,7 @@ private enum Constant {
 
 final class LoginFeatureViewController: UIViewController {
 
-    private let viewModel: LoginFeatureViewModel
+    private let viewModel: LoginFeatureViewModelProtocol
 
     init(viewModel: LoginFeatureViewModel) {
         self.viewModel = viewModel

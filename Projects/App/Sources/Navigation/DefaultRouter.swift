@@ -16,7 +16,6 @@ final class DefaultRouter: RouterProtocol {
 
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
-        configureAppearance()
     }
 
     func register<R: Route>(_ routeType: R.Type,
@@ -72,16 +71,5 @@ final class DefaultRouter: RouterProtocol {
             return nil
         }
         return controller
-    }
-
-    private func configureAppearance() {
-        UINavigationBar.appearance().tintColor = UIColor(red: 0.13,
-                                                         green: 0.17,
-                                                         blue: 0.27,
-                                                         alpha: 1.0)
-        UINavigationBar.appearance().titleTextAttributes = [
-            .foregroundColor: UIColor(red: 0.15, green: 0.15, blue: 0.20, alpha: 1.0),
-            .font: UIFont.boldSystemFont(ofSize: 18)
-        ]
     }
 }
