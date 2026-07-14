@@ -6,9 +6,10 @@
 //
 
 import Foundation
-import UIKit
 import SwiftUI
+import UIKit
 
+/// Button type selector enum
 public enum KLButtonType {
 
     /// Primary type button like sign in
@@ -17,9 +18,12 @@ public enum KLButtonType {
     case plain
 }
 
+/// Button configurator
 public struct KLButtonConfiguration {
 
+    /// Selected button type
     public let style: KLButtonType
+    /// Provided button title
     public let title: String
 
     private init(style: KLButtonType,
@@ -45,9 +49,11 @@ public struct KLButtonConfiguration {
     }
 }
 
-
 public extension KLButtonConfiguration {
 
+    /// Creates UIBarButtonItem from KLButton insets
+    ///
+    /// - Parameter action: Button click action provider
     @MainActor
     func makeBarButtonItem(action: @escaping () -> Void) -> UIBarButtonItem {
         let item = UIBarButtonItem(

@@ -8,8 +8,7 @@
 import SwiftUI
 import UIKit
 
-@MainActor
-private var loadingViewKey: UInt8 = 0
+@MainActor private var loadingViewKey: UInt8 = 0
 
 @MainActor
 protocol SwiftUILoaderProtocol: AnyObject {

@@ -7,5 +7,4 @@
 
 @MainActor
 protocol LoginFeatureRoutingProtocol: Sendable {
-    
 }

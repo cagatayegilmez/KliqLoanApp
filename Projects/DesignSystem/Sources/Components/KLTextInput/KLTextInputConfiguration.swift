@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// Type of text input style
 public enum KLInputType {
 
     /// Email input field
@@ -17,9 +18,12 @@ public enum KLInputType {
     case amount(maxFractionDigits: Int)
 }
 
+/// Text input configuration
 public struct KLTextInputConfiguration {
 
+    /// Type of text input
     public let type: KLInputType
+    /// Placeholder text
     public let placeholder: String
 
     private init(type: KLInputType,

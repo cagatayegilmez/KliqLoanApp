@@ -12,8 +12,7 @@ import Observation
 @Observable
 final class LoginFeatureViewModel: LoginFeatureViewModelProtocol {
 
-    @ObservationIgnored
-    private let router: any LoginFeatureRoutingProtocol
+    @ObservationIgnored private let router: any LoginFeatureRoutingProtocol
 
     init(router: any LoginFeatureRoutingProtocol) {
         self.router = router

@@ -25,23 +25,41 @@ private enum Palette {
     static let systemGray = Color(red: 0.5, green: 0.5, blue: 0.5)
 }
 
+/// Color palette of project
 public enum KLColor {
 
+    /// Primary brand color
     public static let brandPrimary = Palette.navy
+    /// App background color
     public static let background = Palette.mist
+    /// Dark surface color
     public static let surfaceDark = Palette.navy
+    /// Light surface color
     public static let overlayLight = Palette.whiteScrim
+    /// Border color
     public static let border = Palette.lightGray
+    /// Primary tet color
     public static let textPrimary = Palette.ink
+    /// Secondary text color
     public static let textSecondary = Palette.gray
+    /// Success green
     public static let success = Palette.green
+    /// Warning orange
     public static let warning = Palette.orange
+    /// Danger red
     public static let danger = Palette.red
+    /// Neautral gray
     public static let neutral = Palette.gray
+    /// Passive gray
     public static let statusFallback = Palette.darkGray
+    /// Accent indigo color
     public static let accentIndigo = Palette.navy
+    /// Accent blue color
     public static let accentBlue = Palette.blue
+    /// Accent teal color
     public static let accentTeal = Palette.teal
+    /// Accent brown color
     public static let accentBrown = Palette.brown
+    /// Accent passive color
     public static let accentFallback = Palette.systemGray
 }
