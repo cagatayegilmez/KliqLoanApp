@@ -7,4 +7,19 @@
 
 @MainActor
 protocol LoginFeatureViewModelProtocol: AnyObject {
+
+    /// Email vlaue that user typed in input
+    var email: String { get set }
+
+    /// Password vlaue that user typed in input
+    var password: String { get set }
+
+    /// Error string for mail input
+    var mailError: String? { get }
+
+    /// Error string for password input
+    var passwordError: String? { get }
+
+    /// Triggers when sign in button tapped
+    func signInButtonTapped() async
 }

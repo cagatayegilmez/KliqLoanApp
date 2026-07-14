@@ -14,4 +14,8 @@ final class LoginFeatureRouter: LoginFeatureRoutingProtocol {
     init(appRouter: any RouterProtocol) {
         self.appRouter = appRouter
     }
+
+    func routeToHome() {
+        appRouter.push(AppRoute.home, animated: true)
+    }
 }

@@ -39,10 +39,13 @@ public extension CGFloat {
     /// Spacing: 12pt
     static let spacing300 = CGFloat(12.0)
 
+    /// Spacing: 14pt
+    static let spacing350 = CGFloat(14.0)
+
     /// Spacing: 16pt
     static let spacing400 = CGFloat(16.0)
 
-    /// Spacing: 16pt
+    /// Spacing: 18pt
     static let spacing450 = CGFloat(18.0)
 
     /// Spacing: 20pt
@@ -71,4 +74,43 @@ public extension CGFloat {
 
     /// Spacing: 50pt
     static let spacing1250 = CGFloat(50.0)
+
+    /// Spacing: 52pt
+    static let spacing1300 = CGFloat(52.0)
+
+    /// Spacing: 56pt
+    static let spacing1400 = CGFloat(56.0)
+
+    /// Spacing: 60pt
+    static let spacing1500 = CGFloat(60.0)
+
+    /// Spacing: 64pt
+    static let spacing1600 = CGFloat(64.0)
+
+    /// Spacing: 68pt
+    static let spacing1700 = CGFloat(68.0)
+
+    /// Spacing: 72pt
+    static let spacing1800 = CGFloat(72.0)
+
+    /// Spacing: 76pt
+    static let spacing1900 = CGFloat(76.0)
+
+    /// Spacing: 80pt
+    static let spacing2000 = CGFloat(80.0)
+
+    /// Spacing: 84pt
+    static let spacing2100 = CGFloat(84.0)
+
+    /// Spacing: 88pt
+    static let spacing2200 = CGFloat(88.0)
+
+    /// Spacing: 92pt
+    static let spacing2300 = CGFloat(92.0)
+
+    /// Spacing: 96pt
+    static let spacing2400 = CGFloat(96.0)
+
+    /// Spacing: 100pt
+    static let spacing2500 = CGFloat(100.0)
 }

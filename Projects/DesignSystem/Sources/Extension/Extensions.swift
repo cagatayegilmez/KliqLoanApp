@@ -16,6 +16,11 @@ protocol SwiftUILoaderProtocol: AnyObject {
     func toggleLoading(isLoading: Bool)
 }
 
+private enum Constant {
+
+    static let defaultBackgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.97, alpha: 1.0)
+}
+
 extension UIViewController: SwiftUILoaderProtocol {
 
     private var loadingView: LoadingView {
@@ -45,7 +50,7 @@ extension UIViewController: SwiftUILoaderProtocol {
         }
 
         rootView.translatesAutoresizingMaskIntoConstraints = false
-        rootView.backgroundColor = .systemBackground
+        rootView.backgroundColor = Constant.defaultBackgroundColor
 
         view.addSubview(rootView)
         NSLayoutConstraint.activate([

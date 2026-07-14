@@ -7,6 +7,11 @@
 
 import UIKit
 
+private enum Constant {
+
+    static let navTitle: String = "Kliq Loan"
+}
+
 final class LoginFeatureViewController: UIViewController {
 
     private let viewModel: LoginFeatureViewModel
@@ -14,6 +19,7 @@ final class LoginFeatureViewController: UIViewController {
     init(viewModel: LoginFeatureViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        self.title = Constant.navTitle
     }
 
     @available(*, unavailable)

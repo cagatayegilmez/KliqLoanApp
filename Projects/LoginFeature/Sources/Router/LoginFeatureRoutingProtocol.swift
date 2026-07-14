@@ -7,4 +7,7 @@
 
 @MainActor
 protocol LoginFeatureRoutingProtocol: Sendable {
+
+    /// Routes to Home feature
+    func routeToHome()
 }

@@ -23,10 +23,7 @@ final class AppCoordinator {
     }
 
     func start() {
-        navigationController.navigationBar.prefersLargeTitles = true
-
         registerFeatures()
-
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
 
