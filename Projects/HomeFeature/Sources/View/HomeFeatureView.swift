@@ -13,7 +13,7 @@ private enum Constant {
 
     static let screenSize = UIScreen.main.bounds
     static var vStackInsetsWidth: CGFloat {
-        Constant.screenSize.width - .spacing1600
+        Constant.screenSize.width - .spacing800
     }
     static let logoName = "kliq_logo"
 }
@@ -56,11 +56,20 @@ struct HomeFeatureView: View {
     @ViewBuilder
     private func screenContent() -> some View {
         VStack {
+            // Summary view
+            SummaryCard(data: viewModel.summaryCardData)
+                .frame(width: Constant.vStackInsetsWidth,
+                       height: .spacing2500)
+                .padding(.top, .spacing300)
+
+            // Segment view
             KLSegment(selection: $viewModel.selectedSegment,
                       configuration: .segments(viewModel.segments))
             .frame(width: Constant.vStackInsetsWidth,
                    height: .spacing1250)
-            Spacer()
+            .padding(.top, .spacing300)
+
+            
         }
     }
 }

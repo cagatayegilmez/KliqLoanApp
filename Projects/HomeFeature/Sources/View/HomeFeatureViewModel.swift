@@ -34,6 +34,9 @@ final class HomeFeatureViewModel: HomeFeatureViewModelProtocol {
             createSummaryData()
         }
     }
+    var summaryCardData = SummaryCardData(title: Constant.emptyString,
+                                          detail: Constant.emptyString,
+                                          footnote: Constant.emptyString)
     var segments: [KLSegmentItem] = []
     var selectedSegment = UUID() {
         didSet {
@@ -102,6 +105,19 @@ final class HomeFeatureViewModel: HomeFeatureViewModelProtocol {
     }
 
     private func createSummaryData() {
+        let totals = filteredLoans.reduce(into: (principal: 0.0, rate: 0.0)) {
+            $0.principal += $1.principalAmount
+            $0.rate += $1.interestRate
+        }
 
+        let averageRate = filteredLoans.isEmpty
+            ? 0
+            : totals.rate / Double(filteredLoans.count)
+
+        summaryCardData = SummaryCardData(
+            title: totals.principal.formatted(.currency(code: "USD").precision(.fractionLength(0))),
+            detail: "\(filteredLoans.count) loans in portfolio",
+            footnote: "Avg. interest rate: \(averageRate.formatted(.number.precision(.fractionLength(2))))%"
+        )
     }
 }

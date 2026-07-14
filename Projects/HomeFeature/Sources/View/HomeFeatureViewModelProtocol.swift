@@ -20,6 +20,9 @@ protocol HomeFeatureViewModelProtocol: AnyObject {
     /// List of loan data
     var filteredLoans: [Loan] { get }
 
+    /// Provided data for summary card
+    var summaryCardData: SummaryCardData { get }
+
     /// Segment list for display
     var segments: [KLSegmentItem] { get }
 
