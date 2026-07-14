@@ -68,4 +68,7 @@ public extension CGFloat {
 
     /// Spacing: 48pt
     static let spacing1200 = CGFloat(48.0)
+
+    /// Spacing: 50pt
+    static let spacing1250 = CGFloat(50.0)
 }
