@@ -101,7 +101,7 @@ final class HomeFeatureViewModel: HomeFeatureViewModelProtocol {
         }
     }
 
-    func logoButtonTapped() async {
+    func logoutButtonTapped() async {
         do {
             try await authService.logout()
             router.routeToLogout()

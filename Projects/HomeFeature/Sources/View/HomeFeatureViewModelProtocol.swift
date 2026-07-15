@@ -39,7 +39,7 @@ protocol HomeFeatureViewModelProtocol: AnyObject {
     func refreshLoans() async
 
     /// Triggers when logout button tapped on view controller
-    func logoButtonTapped() async
+    func logoutButtonTapped() async
 
     /// Triggers when alert produced
     func presentAlert(_ alert: UIAlertController)
