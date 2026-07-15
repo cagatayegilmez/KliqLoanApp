@@ -7,6 +7,7 @@ KliqLoanApp Challenge Project
 - Used tuist for modulating project
 - Used SwiftUI for UI desgns
 - Used Swift Concurrency
+- Used UserDefaults for session persistence
 
 Used third party libraries:
 

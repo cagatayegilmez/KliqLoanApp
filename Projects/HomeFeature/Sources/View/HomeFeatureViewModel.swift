@@ -51,11 +51,14 @@ final class HomeFeatureViewModel: HomeFeatureViewModelProtocol {
     private var loans: [Loan] = []
     @ObservationIgnored private let router: any HomeFeatureRoutingProtocol
     @ObservationIgnored private let repository: any LoanRepositoryProtocol
+    @ObservationIgnored private let authService: any AuthServiceProtocol
 
     init(router: any HomeFeatureRoutingProtocol,
-         repository: any LoanRepositoryProtocol) {
+         repository: any LoanRepositoryProtocol,
+         authService: any AuthServiceProtocol) {
         self.router = router
         self.repository = repository
+        self.authService = authService
         self.viewState = .idle
     }
 
@@ -99,7 +102,12 @@ final class HomeFeatureViewModel: HomeFeatureViewModelProtocol {
     }
 
     func logoButtonTapped() async {
-        router.routeToLogout()
+        do {
+            try await authService.logout()
+            router.routeToLogout()
+        } catch {
+            onError?(error)
+        }
     }
 
     func presentAlert(_ alert: UIAlertController) {

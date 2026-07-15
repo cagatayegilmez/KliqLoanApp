@@ -17,10 +17,13 @@ final class AppCoordinator {
     private let window: UIWindow
     private let navigationController = KLNavigationController()
     private let router: DefaultRouter
+    private let authService: any AuthServiceProtocol
 
-    init(window: UIWindow) {
+    init(window: UIWindow,
+         authService: any AuthServiceProtocol = AuthService()) {
         self.window = window
         self.router = DefaultRouter(navigationController: navigationController)
+        self.authService = authService
     }
 
     func start() {
@@ -28,18 +31,21 @@ final class AppCoordinator {
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
 
-        router.setRoot(AppRoute.login, animated: false)
+        let initialRoute: AppRoute = authService.isLoggedIn ? .home : .login
+        router.setRoot(initialRoute, animated: false)
     }
 
     // MARK: - Feature registration
 
     private func registerFeatures() {
-        router.register(AppRoute.self) { [unowned router] route in
+        router.register(AppRoute.self) { [unowned router, authService] route in
             switch route {
             case .login:
-                return LoginFeatureBuilder.build(router: router)
+                return LoginFeatureBuilder.build(router: router,
+                                                 authService: authService)
             case .home:
-                return HomeFeatureBuilder.build(router: router)
+                return HomeFeatureBuilder.build(router: router,
+                                                authService: authService)
             }
         }
     }
