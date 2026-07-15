@@ -11,7 +11,7 @@ import ProjectDescriptionHelpers
 let project = Project.framework(
     name: "LoginFeature",
     bundleIdSuffix: "login",
-    hasTests: false,
+    hasTests: true,
     dependencies: [
         .module("Core"),
         .module("DesignSystem")

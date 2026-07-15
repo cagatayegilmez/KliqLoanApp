@@ -11,7 +11,7 @@ import ProjectDescriptionHelpers
 let project = Project.framework(
     name: "HomeFeature",
     bundleIdSuffix: "home",
-    hasTests: false,
+    hasTests: true,
     dependencies: [
         .module("Core"),
         .module("DesignSystem"),
