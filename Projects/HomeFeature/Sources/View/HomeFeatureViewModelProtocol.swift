@@ -20,6 +20,9 @@ protocol HomeFeatureViewModelProtocol: AnyObject {
     /// List of loan data
     var filteredLoans: [Loan] { get }
 
+    /// Provided data for summary card
+    var summaryCardData: SummaryCardData { get }
+
     /// Segment list for display
     var segments: [KLSegmentItem] { get }
 
@@ -31,6 +34,9 @@ protocol HomeFeatureViewModelProtocol: AnyObject {
 
     /// Fetches and processes the loan list
     func fetchLoans() async
+
+    /// Refreshes and processes the loan list
+    func refreshLoans() async
 
     /// Triggers when logout button tapped on view controller
     func logoButtonTapped() async

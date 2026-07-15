@@ -28,20 +28,20 @@ private struct KLTextInputPreviewHost: View {
                 .onTextChanged { lastCallback = $0 }
 
             Text("Binding: \"\(text)\"")
-                .font(.caption)
+                .font(.textCaption)
                 .foregroundStyle(KLColor.textPrimary)
             Text("onTextChanged: \"\(lastCallback)\"")
-                .font(.caption)
+                .font(.textCaption)
                 .foregroundStyle(KLColor.textPrimary)
             Text("error: \"\(error ?? "nil")\"")
-                .font(.caption)
+                .font(.textCaption)
                 .foregroundStyle(KLColor.textPrimary)
 
             if let errorMessage {
                 Button("Trigger Error") {
                     error = errorMessage
                 }
-                .font(.caption)
+                .font(.textCaption)
             }
             Spacer()
         }

@@ -56,7 +56,7 @@ public struct KLTextInput: View {
 
             if hasError {
                 Text(error ?? "")
-                    .font(.caption)
+                    .font(.textCaption)
                     .foregroundStyle(KLColor.danger)
                     .padding(.horizontal, Constant.horizontalPadding)
                     .transition(.opacity)

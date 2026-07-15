@@ -11,10 +11,6 @@ import SwiftUI
 @MainActor
 private enum Constant {
 
-    static let screenSize = UIScreen.main.bounds
-    static var vStackInsetsWidth: CGFloat {
-        Constant.screenSize.width - .spacing1600
-    }
     static let logoName = "kliq_logo"
 }
 
@@ -46,8 +42,8 @@ struct HomeFeatureView: View {
             Image(Constant.logoName)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: Constant.vStackInsetsWidth,
-                       height: .spacing1250)
+                .frame(height: .spacing1250)
+                .padding(.horizontal, .spacing800)
         case .loaded:
             screenContent()
         }
@@ -56,11 +52,36 @@ struct HomeFeatureView: View {
     @ViewBuilder
     private func screenContent() -> some View {
         VStack {
+            // Summary view
+            SummaryCard(data: viewModel.summaryCardData)
+                .frame(height: .spacing2500)
+                .padding(.top, .spacing300)
+
+            // Segment view
             KLSegment(selection: $viewModel.selectedSegment,
                       configuration: .segments(viewModel.segments))
-            .frame(width: Constant.vStackInsetsWidth,
-                   height: .spacing1250)
-            Spacer()
+            .frame(height: .spacing1250)
+            .padding(.top, .spacing300)
+
+            // Loan list
+            loanList()
+                .padding(.top, .spacing250)
+        }
+        .padding(.horizontal, .spacing400)
+    }
+
+    @ViewBuilder
+    private func loanList() -> some View {
+        ScrollView(showsIndicators: false) {
+            VStack(spacing: .spacing300) {
+                ForEach(viewModel.filteredLoans) { loan in
+                    LoanCard(loan: loan)
+                }
+            }
+            .padding(.vertical, .spacing150)
+        }
+        .refreshable {
+            await viewModel.refreshLoans()
         }
     }
 }

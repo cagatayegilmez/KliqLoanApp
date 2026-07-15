@@ -34,7 +34,7 @@ private enum LoanFilterSegments {
                 )
 
                 Text("Selected: \(selectedTitle)")
-                    .font(.caption)
+                    .font(.textCaption)
                     .foregroundStyle(KLColor.textPrimary)
                 Spacer()
             }

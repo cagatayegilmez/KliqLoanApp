@@ -18,9 +18,9 @@ public extension Font {
     /// Button title font
     static let buttonLabel = Font.system(size: 15, weight: .bold)
     /// Body text font
-    static let body = Font.system(size: 13)
+    static let textBody = Font.system(size: 13)
     /// Caption text font
-    static let caption = Font.system(size: 12)
+    static let textCaption = Font.system(size: 12)
     /// Badge description font
-    static let badge = Font.system(size: 10, weight: .bold)
+    static let textBadge = Font.system(size: 10, weight: .bold)
 }

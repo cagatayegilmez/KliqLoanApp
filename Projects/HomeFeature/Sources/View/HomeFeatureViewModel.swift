@@ -22,6 +22,9 @@ private enum Constant {
         "Default",
         "Paid"
     ]
+    static let currencyCode = "USD"
+    static let loansInPortfolio = "loans in portfolio"
+    static let avgInterest = "Avg. interest rate:"
 }
 
 @MainActor
@@ -34,6 +37,9 @@ final class HomeFeatureViewModel: HomeFeatureViewModelProtocol {
             createSummaryData()
         }
     }
+    var summaryCardData = SummaryCardData(title: Constant.emptyString,
+                                          detail: Constant.emptyString,
+                                          footnote: Constant.emptyString)
     var segments: [KLSegmentItem] = []
     var selectedSegment = UUID() {
         didSet {
@@ -79,6 +85,19 @@ final class HomeFeatureViewModel: HomeFeatureViewModelProtocol {
         }
     }
 
+    func refreshLoans() async {
+        do {
+            let loans = try await repository.loadLoans()
+            self.loans = loans
+            filterData()
+        } catch is CancellationError {
+            viewState = .idle
+        } catch {
+            viewState = .failed
+            onError?(error)
+        }
+    }
+
     func logoButtonTapped() async {
         router.routeToLogout()
     }
@@ -101,7 +120,21 @@ final class HomeFeatureViewModel: HomeFeatureViewModelProtocol {
         }
     }
 
+    /// Filters loan data when selected segment changes
     private func createSummaryData() {
+        let totals = filteredLoans.reduce(into: (principal: 0.0, rate: 0.0)) {
+            $0.principal += $1.principalAmount
+            $0.rate += $1.interestRate
+        }
 
+        let averageRate = filteredLoans.isEmpty
+            ? 0
+            : totals.rate / Double(filteredLoans.count)
+
+        summaryCardData = SummaryCardData(
+            title: totals.principal.formatted(.currency(code: Constant.currencyCode).precision(.fractionLength(.zero))),
+            detail: "\(filteredLoans.count) \(Constant.loansInPortfolio)",
+            footnote: "\(Constant.avgInterest) \(averageRate.formatted(.number.precision(.fractionLength(2))))%"
+        )
     }
 }
