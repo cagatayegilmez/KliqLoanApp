@@ -22,6 +22,9 @@ private enum Constant {
         "Default",
         "Paid"
     ]
+    static let currencyCode = "USD"
+    static let loansInPortfolio = "loans in portfolio"
+    static let avgInterest = "Avg. interest rate:"
 }
 
 @MainActor
@@ -82,6 +85,19 @@ final class HomeFeatureViewModel: HomeFeatureViewModelProtocol {
         }
     }
 
+    func refreshLoans() async {
+        do {
+            let loans = try await repository.loadLoans()
+            self.loans = loans
+            filterData()
+        } catch is CancellationError {
+            viewState = .idle
+        } catch {
+            viewState = .failed
+            onError?(error)
+        }
+    }
+
     func logoButtonTapped() async {
         router.routeToLogout()
     }
@@ -104,6 +120,7 @@ final class HomeFeatureViewModel: HomeFeatureViewModelProtocol {
         }
     }
 
+    /// Filters loan data when selected segment changes
     private func createSummaryData() {
         let totals = filteredLoans.reduce(into: (principal: 0.0, rate: 0.0)) {
             $0.principal += $1.principalAmount
@@ -115,9 +132,9 @@ final class HomeFeatureViewModel: HomeFeatureViewModelProtocol {
             : totals.rate / Double(filteredLoans.count)
 
         summaryCardData = SummaryCardData(
-            title: totals.principal.formatted(.currency(code: "USD").precision(.fractionLength(0))),
-            detail: "\(filteredLoans.count) loans in portfolio",
-            footnote: "Avg. interest rate: \(averageRate.formatted(.number.precision(.fractionLength(2))))%"
+            title: totals.principal.formatted(.currency(code: Constant.currencyCode).precision(.fractionLength(.zero))),
+            detail: "\(filteredLoans.count) \(Constant.loansInPortfolio)",
+            footnote: "\(Constant.avgInterest) \(averageRate.formatted(.number.precision(.fractionLength(2))))%"
         )
     }
 }

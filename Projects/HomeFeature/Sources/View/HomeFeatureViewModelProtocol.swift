@@ -35,6 +35,9 @@ protocol HomeFeatureViewModelProtocol: AnyObject {
     /// Fetches and processes the loan list
     func fetchLoans() async
 
+    /// Refreshes and processes the loan list
+    func refreshLoans() async
+
     /// Triggers when logout button tapped on view controller
     func logoButtonTapped() async
 
