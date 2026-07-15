@@ -5,6 +5,8 @@
 //  Created by Çağatay Eğilmez on 13.07.2026.
 //
 
+import UIKit
+
 @MainActor
 protocol LoginFeatureViewModelProtocol: AnyObject {
 
@@ -20,6 +22,12 @@ protocol LoginFeatureViewModelProtocol: AnyObject {
     /// Error string for password input
     var passwordError: String? { get set }
 
+    /// Triggers when error occurs
+    var onError: ((Error) -> Void)? { get set }
+
     /// Triggers when sign in button tapped
     func signInButtonTapped() async
+
+    /// Triggers when alert produced
+    func presentAlert(_ alert: UIAlertController)
 }

@@ -6,6 +6,7 @@
 //
 
 import Core
+import UIKit
 
 final class LoginFeatureRouter: LoginFeatureRoutingProtocol {
 
@@ -16,6 +17,10 @@ final class LoginFeatureRouter: LoginFeatureRoutingProtocol {
     }
 
     func routeToHome() {
-        appRouter.push(AppRoute.home, animated: true)
+        appRouter.setRoot(AppRoute.home, animated: true)
+    }
+
+    func present(alert: UIAlertController) {
+        appRouter.present(alert, animated: true)
     }
 }

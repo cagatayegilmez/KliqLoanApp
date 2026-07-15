@@ -16,12 +16,16 @@ public enum HomeFeatureBuilder {
 
     /// Builds the root view controller for the Home feature
     ///
-    /// - Parameter router: Router protocol item for routing screens
-    public static func build(router: any RouterProtocol) -> UIViewController {
+    /// - Parameters:
+    ///  - router: Router protocol item for routing screens
+    ///  - authService: Auth service for session management
+    public static func build(router: any RouterProtocol,
+                             authService: any AuthServiceProtocol) -> UIViewController {
         let loanRepostory = LoanRepository()
         let featureRouter = HomeFeatureRouter(appRouter: router)
         let viewModel = HomeFeatureViewModel(router: featureRouter,
-                                             repository: loanRepostory)
+                                             repository: loanRepostory,
+                                             authService: authService)
         let viewController = HomeFeatureViewController(viewModel: viewModel)
         let view = HomeFeatureView(viewModel: viewModel, loader: viewController)
         viewController.addSwiftUIView(view, hasNavBar: true)

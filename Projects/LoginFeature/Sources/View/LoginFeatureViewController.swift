@@ -10,6 +10,8 @@ import UIKit
 private enum Constant {
 
     static let navTitle: String = "Kliq Loan"
+    static let errorTitle = "Error"
+    static let alertButtonTitle = "OK"
 }
 
 final class LoginFeatureViewController: UIViewController {
@@ -25,5 +27,25 @@ final class LoginFeatureViewController: UIViewController {
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setOnErrorHandler()
+    }
+
+    private func setOnErrorHandler() {
+        viewModel.onError = { [weak self] error in
+            guard let self else {
+                return
+            }
+
+            let alert = UIAlertController(title: Constant.errorTitle,
+                                          message: error.localizedDescription,
+                                          preferredStyle: .alert)
+            alert.addAction(.init(title: Constant.alertButtonTitle,
+                                  style: .cancel))
+            self.viewModel.presentAlert(alert)
+        }
     }
 }
