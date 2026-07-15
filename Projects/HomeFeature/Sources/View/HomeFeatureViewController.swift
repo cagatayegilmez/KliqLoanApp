@@ -47,7 +47,7 @@ final class HomeFeatureViewController: UIViewController {
 
             self.logoutTask?.cancel()
             self.logoutTask = Task {
-                await self.viewModel.logoButtonTapped()
+                await self.viewModel.logoutButtonTapped()
             }
         }
         setOnErrorHandler()
