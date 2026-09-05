@@ -14,7 +14,10 @@ import ProjectDescription
 let packageSettings = PackageSettings(
     productTypes: [
         "Lottie": .framework
-    ]
+    ],
+    baseSettings: .settings(
+        base: ["IPHONEOS_DEPLOYMENT_TARGET": "17.0"]
+    )
 )
 #endif
 
